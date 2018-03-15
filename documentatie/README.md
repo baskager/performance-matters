@@ -41,3 +41,16 @@ De performance is weer aanzienlijk verbeterd. De above-the-fold content is in 73
 
 ![Pagespeed mobile](http://www.kager.io/uploads/minor/performance-matters/pm-ps-fonts-mobile2.png)
 ![Pagespeed desktop](http://www.kager.io/uploads/minor/performance-matters/pm-ps-fonts-desktop2.png)
+
+### Image optimalisaties
+
+#### Ondernomen stappen voor de image optimalisaties
+- Compressie
+- Verkleinen van bepaalde afbeeldingen
+
+#### Performance verbeteringen
+De gehele pagina is nu in 17 seconden geladen. Dit was eerder 30 seconden.
+![Voorgaand alle optimalisaties](http://www.kager.io/uploads/minor/performance-matters/pm-images.png)
+
+![Pagespeed mobile](http://www.kager.io/uploads/minor/performance-matters/pm-ps-images-mobile.png)
+![Pagespeed desktop](http://www.kager.io/uploads/minor/performance-matters/pm-ps-images-desktop.png)
