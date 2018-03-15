@@ -1,8 +1,9 @@
 # Performance Optimaliseren bootstrap documentatie
 
 ## Performance voorgaand alle optimalisaties
-8.07 seconden voor het eerste frame is getoond
-11.10 seconden voor het laden van de 'above-the-fold' content
+- 8.07 seconden voor het eerste frame is getoond.
+- 11.10 seconden voor het laden van de 'above-the-fold' content.
+- 30 seconden voor het laden van de gehele pagina
 ![Voorgaand alle optimalisaties](http://www.kager.io/uploads/minor/performance-matters/pm-all-before.png)
 ![Pagespeed mobile](http://www.kager.io/uploads/minor/performance-matters/pm-ps-mobile.png)
 ![Pagespeed desktop](http://www.kager.io/uploads/minor/performance-matters/pm-ps-desktop.png)
@@ -54,3 +55,51 @@ De gehele pagina is nu in 17 seconden geladen. Dit was eerder 30 seconden.
 
 ![Pagespeed mobile](http://www.kager.io/uploads/minor/performance-matters/pm-ps-images-mobile.png)
 ![Pagespeed desktop](http://www.kager.io/uploads/minor/performance-matters/pm-ps-images-desktop.png)
+
+### Minify JavaScript en CSS
+
+#### Ondernomen stappen voor de image optimalisaties
+- Minify JavaScript
+- Minify CSS
+
+#### Performance verbeteringen
+De gehele pagina is nu onder 16 seconden geladen.
+![Voorgaand alle optimalisaties](http://www.kager.io/uploads/minor/performance-matters/pm-minify.png)
+
+![Pagespeed mobile](http://www.kager.io/uploads/minor/performance-matters/pm-ps-minify-mobile2.png)
+![Pagespeed desktop](http://www.kager.io/uploads/minor/performance-matters/pm-ps-minify-desktop.png)
+
+
+## Samenvatting
+
+### Gehele laadtijd
+**Oude situatie:** 30 seconden.
+
+**Nieuwe situatie:** 16 seconden.
+
+**Verbetering in seconden:** 14 seconden.
+
+**Factor:** 2x sneller (afgerond)
+
+### 'Above the fold'
+**Oude situatie:** 11.10 seconden
+
+**Nieuwe situatie:** 638 milliseconden
+
+**Verbetering in seconden:** 10.46 seconden
+
+**Factor:** 17x sneller (afgerond)
+
+### Google pagespeed score
+
+**Oude score mobiel:** 54
+
+**Oude score desktop:** 49
+
+**Nieuwe score mobiel:** 97
+
+**Nieuwe score desktop:** 78
+
+**Factor mobiel:** 1.8x beter (afgerond)
+
+**Factor desktop:** 1.6x beter (afgerond)
