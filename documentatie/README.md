@@ -40,7 +40,7 @@ De performance is weer aanzienlijk verbeterd. De above-the-fold content is in 73
 ![Voorgaand alle optimalisaties](http://www.kager.io/uploads/minor/performance-matters/pm-fonts.png)
 
 ![Pagespeed mobile](http://www.kager.io/uploads/minor/performance-matters/pm-ps-fonts-mobile2.png)
-![Pagespeed desktop](http://www.kager.io/uploads/minor/performance-matters/pm-ps-fonts-desktop2.png)
+![Pagespeed desktop](http://www.kager.io/uploads/minor/performance-matters/pm-ps-fonts-desktop3.png)
 
 ### Image optimalisaties
 
