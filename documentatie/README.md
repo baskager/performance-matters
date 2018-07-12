@@ -1,5 +1,6 @@
 # Performance matters: kager.io
 
+[Klik hier voor een demo](https://test.kager.io)
 ![Kager.io](http://www.kager.io/uploads/minor/performance-matters/audit/kager/kager-io-screenshot.png)
 ![Chrome audit](http://www.kager.io/uploads/minor/performance-matters/audit/kager/chrome-audit.png)
 
@@ -13,7 +14,7 @@ Op mobiele apparaten krijgt je een prompt om de website aan hun homescreen toe t
 
 ## Server side rendering
 
-De eerste versie van deze app gebruikte wel nodejs en express maar er werd bijna niets op de server gerenderd. De komende dingen heb ik verbeterd:
+De eerste versie van deze app gebruikte wel NodeJS en Express maar er werd bijna niets op de server gerenderd. De komende dingen heb ik verbeterd:
 
 - Projecten in de portfolio worden ingeladen bij het starten bij de server. De projecten staan dus altijd in het geheugen van de server waardoor ze niet elke keer opgehaald moeten worden middels een ajax request.
 - Alle pagina's worden server-side gerenderd. In de oude situatie werd alleen de homepage gerenderd en werden andere pagina's dynamisch ingeladen middels ajax requests. Door deze architectuur was de website niet te gebruiken zonder javascript en moest men wachten tot de content opgehaald was middels een ajax request.
@@ -48,7 +49,7 @@ In dit project heb ik gulp geimplementeerd om alle content te minifyen. De volge
 De performance is verbeterd. Het eerste frame wordt nu getoont in 1.12 seconden en de totale laadtijd is verlaagd naar 7.06 seconden
 
 7.06 seconden voordat de website leesbaar is (fonts)
-![Minifying van resources](http://www.kager.io/uploads/minor/performance-matters/audit/kager/homepage minify-compress.png)
+![Minifyen van resources](http://www.kager.io/uploads/minor/performance-matters/audit/kager/homepage%20minify-compress.png)
 
 ### Async laden van resources
 
