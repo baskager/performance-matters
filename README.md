@@ -1,6 +1,7 @@
 # Performance matters
 
-## Performance Optimalisation
+## Performance Optimisation
+
 [Klik hier voor de documentatie](https://github.com/baskager/performance-matters/tree/master/documentatie)
 
 ## Project setup
