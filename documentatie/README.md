@@ -9,7 +9,7 @@ Een service worker is in dit project geimplementeerd en krijgt van de google chr
 
 In deze website cached de service worker alle images en pagina's. De gehele website is offline te gebruiken.
 
-Op mobiele apparaten krijgt met een prompt om de website aan hun homescreen toe te voegen. In dit geval wordt de website een soort 'APP' en krijgt de gebruiker een launcher met een icoontje van mijn logo op zijn homescreen. Bij het openen van de app wordt een splashscreen getoond met mijn logo.
+Op mobiele apparaten krijgt je een prompt om de website aan hun homescreen toe te voegen. In dit geval wordt de website een soort 'APP' en krijgt de gebruiker een launcher met een icoontje van mijn logo op zijn homescreen. Bij het openen van de app wordt een splashscreen getoond met mijn logo.
 
 ## Server side rendering
 
