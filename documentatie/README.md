@@ -1,105 +1,86 @@
-# Performance Optimaliseren bootstrap documentatie
+# Performance matters: kager.io
+
+![Kager.io](http://www.kager.io/uploads/minor/performance-matters/audit/kager/kager-io-screenshot.png)
+![Chrome audit](http://www.kager.io/uploads/minor/performance-matters/audit/kager/chrome-audit.png)
+
+## Service worker
+
+Een service worker is in dit project geimplementeerd en krijgt van de google chrome audit een score van 100/100
+
+In deze website cached de service worker alle images en pagina's. De gehele website is offline te gebruiken.
+
+Op mobiele apparaten krijgt met een prompt om de website aan hun homescreen toe te voegen. In dit geval wordt de website een soort 'APP' en krijgt de gebruiker een launcher met een icoontje van mijn logo op zijn homescreen. Bij het openen van de app wordt een splashscreen getoond met mijn logo.
+
+## Server side rendering
+
+De eerste versie van deze app gebruikte wel nodejs en express maar er werd bijna niets op de server gerenderd. De komende dingen heb ik verbeterd:
+
+- Projecten in de portfolio worden ingeladen bij het starten bij de server. De projecten staan dus altijd in het geheugen van de server waardoor ze niet elke keer opgehaald moeten worden middels een ajax request.
+- Alle pagina's worden server-side gerenderd. In de oude situatie werd alleen de homepage gerenderd en werden andere pagina's dynamisch ingeladen middels ajax requests. Door deze architectuur was de website niet te gebruiken zonder javascript en moest men wachten tot de content opgehaald was middels een ajax request.
+- Nginx proxied op de kager.io (Debian Linux) server naar de node webserver waardoor direct gebruik gemaakt wordt van GZIP compressie en een SSL certificaat.
+
+## Gulp
+
+In dit project heb ik gulp geimplementeerd om alle content te minifyen. De volgende media wordt verkleind door de task-runner:
+
+- Afbeeldingen
+- CSS
+- Javascript
+
+# Performance Audit (slome 3G verbinding)
 
 ## Performance voorgaand alle optimalisaties
-- 8.07 seconden voor het eerste frame is getoond.
-- 11.10 seconden voor het laden van de 'above-the-fold' content.
-- 30 seconden voor het laden van de gehele pagina
-![Voorgaand alle optimalisaties](http://www.kager.io/uploads/minor/performance-matters/pm-all-before.png)
-![Pagespeed mobile](http://www.kager.io/uploads/minor/performance-matters/pm-ps-mobile.png)
-![Pagespeed desktop](http://www.kager.io/uploads/minor/performance-matters/pm-ps-desktop.png)
 
-### Critical CSS
+- 4.35 seconden voor het eerste frame is getoond.
+- 7.16 seconden voordat de website leesbaar is (fonts)
+- 7.16 seconden voor het laden van de gehele pagina
 
-#### Ondernomen stappen voor de critical CSS optimalisatie
-- 'Above the fold' styling als inline css zodat dit als eerste laadt.
+  ![Voorgaand alle optimalisaties](http://www.kager.io/uploads/minor/performance-matters/audit/kager/homepage-before.png)
+
+### Minifyen van javascript, css en afbeeldingen
+
+### Ondernomen stappen
+
+- Gulp geimplementeerd voor het automatisch minifyen van alle resources
 
 #### Performance verbeteringen
-Performance is door het inline stylen alleen niet verbeterd. Dit komt waarschijnlijk omdat de resources (zoals de fonts) nog niet async ingeladen worden
 
+De performance is verbeterd. Het eerste frame wordt nu getoont in 1.12 seconden en de totale laadtijd is verlaagd naar 7.06 seconden
+
+7.06 seconden voordat de website leesbaar is (fonts)
+![Minifying van resources](http://www.kager.io/uploads/minor/performance-matters/audit/kager/homepage minify-compress.png)
 
 ### Async laden van resources
 
 #### Ondernomen stappen voor de async optimalisatie
-- 'rel=preload' toegevoegd aan de <link> tags
-- JS voor asynchroon laden van de css files
+
+- <link> tags met 'rel=preload' voor css en Javascript
 
 #### Performance verbeteringen
-De performance is aanzienlijk verbeterd. De above-the-fold content is in 3.73 seconden geladen.
-![Voorgaand alle optimalisaties](http://www.kager.io/uploads/minor/performance-matters/pm-async2.png)
 
-![Pagespeed mobile](http://www.kager.io/uploads/minor/performance-matters/pm-ps-async-mobile2.png)
-![Pagespeed desktop](http://www.kager.io/uploads/minor/performance-matters/pm-ps-async-desktop2.png)
+Het eerste frame wordt nu getoont in 4.24 seconden en de totale laadtijd is verlaagd naar 7.04 seconden.
+
+Voor het verbeteren van de performance bij het eerste frame kan de 'above the fold' styling inline worden geplaatst.
+
+7.04 seconden voordat de website leesbaar is (fonts)
+![Async laden van resources](http://www.kager.io/uploads/minor/performance-matters/audit/kager/async-resources.png)
 
 ### Font loading
 
 #### Ondernomen stappen voor de font loading optimalisatie
+
 - Fonts niet meer inladen in inline style
+- Local fonts ipv. Google fonts
 - 'font-display: swap' stijl op de fonts
 
 #### Performance verbeteringen
-De performance is weer aanzienlijk verbeterd. De above-the-fold content is in 738 milliseconden geladen.
-![Voorgaand alle optimalisaties](http://www.kager.io/uploads/minor/performance-matters/pm-fonts.png)
 
-![Pagespeed mobile](http://www.kager.io/uploads/minor/performance-matters/pm-ps-fonts-mobile2.png)
-![Pagespeed desktop](http://www.kager.io/uploads/minor/performance-matters/pm-ps-fonts-desktop3.png)
+Het eerste frame wordt nu getoont in 4.21 seconden en de totale laadtijd is 7.24 seconden
 
-### Image optimalisaties
+4.21 seconden voordat de website leesbaar is (fonts)
+![Voorgaand alle optimalisaties](http://www.kager.io/uploads/minor/performance-matters/audit/kager/font-optimisations.png)
 
-#### Ondernomen stappen voor de image optimalisaties
-- Compressie
-- Verkleinen van bepaalde afbeeldingen
+## Samenvatting audit
 
-#### Performance verbeteringen
-De gehele pagina is nu in 17 seconden geladen. Dit was eerder 30 seconden.
-![Voorgaand alle optimalisaties](http://www.kager.io/uploads/minor/performance-matters/pm-images.png)
-
-![Pagespeed mobile](http://www.kager.io/uploads/minor/performance-matters/pm-ps-images-mobile.png)
-![Pagespeed desktop](http://www.kager.io/uploads/minor/performance-matters/pm-ps-images-desktop.png)
-
-### Minify JavaScript en CSS
-
-#### Ondernomen stappen voor de image optimalisaties
-- Minify JavaScript
-- Minify CSS
-
-#### Performance verbeteringen
-De gehele pagina is nu onder 16 seconden geladen.
-![Voorgaand alle optimalisaties](http://www.kager.io/uploads/minor/performance-matters/pm-minify.png)
-
-![Pagespeed mobile](http://www.kager.io/uploads/minor/performance-matters/pm-ps-minify-mobile2.png)
-![Pagespeed desktop](http://www.kager.io/uploads/minor/performance-matters/pm-ps-minify-desktop.png)
-
-
-## Samenvatting
-
-### Gehele laadtijd
-**Oude situatie:** 30 seconden.
-
-**Nieuwe situatie:** 16 seconden.
-
-**Verbetering in seconden:** 14 seconden.
-
-**Factor:** 2x sneller (afgerond)
-
-### 'Above the fold'
-**Oude situatie:** 11.10 seconden
-
-**Nieuwe situatie:** 638 milliseconden
-
-**Verbetering in seconden:** 10.46 seconden
-
-**Factor:** 17x sneller (afgerond)
-
-### Google pagespeed score
-
-**Oude score mobiel:** 54
-
-**Oude score desktop:** 49
-
-**Nieuwe score mobiel:** 97
-
-**Nieuwe score desktop:** 78
-
-**Factor mobiel:** 1.8x beter (afgerond)
-
-**Factor desktop:** 1.6x beter (afgerond)
+- De eerste leesbare paint is verlaagd van 7.16 seconden naar 4.21 seconden.
+- De gehele laadtijd is niet verbeterd
